@@ -1,0 +1,18 @@
+<section class="container">
+<form action="/projects/{{project._id}}/edit" method="post">
+    <input value="{{project.name}}" class="form-control" type="text" placeholder="Nombre de tu problema" name="name" />
+    <br>
+    <input value="{{project.price}}" class="form-control" name="price" type="number" placeholder="el precio"/>
+    <br>
+    <label>Descripcion:</label>
+    <textarea class="form-control" name="desc" cols="30" rows="5">{{project.desc}}</textarea>
+    <br>
+    <label >
+        Problema Activo:
+        <input value="{{project.active}}" type="checkbox" name="active"/>
+    </label>
+    <br>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+</seproject

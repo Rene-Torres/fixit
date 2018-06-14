@@ -1,0 +1,149 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+</head>
+<style>
+#profilePhoto{
+  width:200px;
+  height: :200px;
+}
+</style>
+<br><br>
+
+<section class="profile">
+<div class='section profile-heading'>
+      <div class='columns is-mobile is-multiline'>
+        <div class='column is-2'>
+          <span class='header-icon user-profile-image'>
+          {{#if user.profilePhoto}}
+          <img src="{{user.profilePhoto}}" alt="" >
+          {{else}}
+          <img  src="https://media.forgecdn.net/avatars/124/768/636424778749237239.jpeg" alt="avatar"/>
+          {{/if}}
+
+          <form class="avatar" action="/profile" method="post" enctype="multipart/form-data">
+            <!-- CHOOSE A FIle -->
+                        <br>
+                        <div class="file">
+                          <label class="file-label" class="button is-danger">
+                            <input class="file-input" type="file" name="profilePhoto" id="file">
+                              <span class="file-cta">
+                                <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label">
+                                Change Pic
+                                </span>
+                              </span>
+                            </label>
+                          </div>
+                        <!-- /CHOOSE A FIle -->
+
+            <input type="submit" value="Guardar" class="button is-danger">
+          </form>
+          </span>
+        </div>
+        <div class='column is-4-tablet is-10-mobile name'>
+          <p>
+            <span class='title is-bold cap'>{{user.name}} {{user.lastname}} </span>
+            <br>
+            <form class="" action="/logout" method="post">
+      <a href="/projects" class="button is-danger">Trabajos</a> <a href="/offers" class="button is-danger">Propuestas</a>
+<br><br>
+      <a href="/logout" class="button is-info">Log Out</a>
+
+            </form>
+            <br>
+          </p>
+          <p class='tagline'>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur non inventore recusandae harum cumque ex laborum quia, obcaecati iste autem sequi adipisci! Nemo modi nobis ad eaque quam nisi? Quaerat.
+          </p>
+        </div>
+        <div class='column is-2-tablet is-4-mobile has-text-centered'>
+          <p class='stat-val'>30</p>
+          <p class='stat-key'>Projects</p>
+        </div>
+        <div class='column is-2-tablet is-4-mobile has-text-centered'>
+          <p class='stat-val'>10</p>
+          <p class='stat-key'>Reviews</p>
+        </div>
+        <div class='column is-2-tablet is-4-mobile has-text-centered'>
+          <p class='stat-val cap'> {{user.role}} </p>
+          <p class='stat-key'>Type</p>
+        </div>
+
+      </div>
+
+      <hr>
+<section>
+  <div class="formato">
+<form class="forma" action="/projects/new" method="post" enctype="multipart/form-data">
+<label for="">Solicita un servicio</label>
+<input type="text" class="form-control field" name="title" placeholder="¿Que necesitas reparar?"><br>
+<label for="">Proporciona una descripcion de tu problema</label>
+<textarea class="form-control field" name="desc" rows="8" cols="80"></textarea><br>
+<label for="">¿Cuál es tu presupuesto?</label>
+<input type="number" class="form-control field" name="price" value="$0.0" placeholder="Precio"><br>
+<label>Agrega hasta 5 fotos de tu problema</label><br>
+<input type="file" class="form-control field" name="photos" multiple/><br>
+<input class="btn btn-primary form-control field" type="submit">
+</form>
+</div>
+
+<br/>
+
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Save changes</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
+<div class="container">
+  <div class="notification">
+<div class="jobstable">
+</div>
+<br>
+<section class="profile-jobs">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Servicio</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Fecha de creación</th>
+        <th scope="col">Propuestas</th>
+        <th scope="col">Contacto</th>
+
+      </tr>
+    </thead>
+    {{#each user.projects}}
+    <tbody>
+      <tr>
+        <th scope="row">{{counter @index}}</th>
+        <td><a href="/projects/{{_id}}">{{this.title}}</a></td>
+
+        <td>{{this.desc}}</td>
+        <td>{{moment this.date "DD/MMMM/YYYY"}}</td>
+        <td><a href="/offers">{{#each this.offers}}<li>{{this.title}}</li>{{/each}}</a></td>
+        <td><a href="/sendmail">Contactar worker</a>
+        </td>
+
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+<br><br><br>
+<br><br><br>
+<br><br><br>
+

@@ -1,0 +1,130 @@
+
+<br><br>
+<div class="container">
+  <div class="notification">
+    <a href="/profile" class="button is-link is-outlined">Return</a><br><br>
+<div class="tile is-ancestor">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box">
+      <p class="title">{{project.title}}</p>
+      <p>
+        <a class="button is-success" id="placebid">Place a Bid</a>
+        <a class="button is-danger">Report this project</a>
+        <br>
+
+
+      </p>
+
+    </div>
+    <div class="tile is-child box">
+      <p class="title">Ubicación</p>
+      <!-- MAP  ////////////////////////-->
+      <div style="width: 100%"><iframe width="100%" height="372" src="https://maps.google.com/maps?width=100%&height=372&hl=es&q=wework%20insurgentes+(FixIt-Now)&ie=UTF8&t=&z=16&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
+      <!-- MAP  ////////////////////////-->
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <div class="content">
+
+      <p class="title">Descripcion de la solicitud</p>
+      <p class="detalles">
+        Titulo: {{project.title}}<p>
+      <br>
+      <p class="detalles">Usuario: {{project.user.name}}</p>
+<br>
+      <p class="detalles"> Descripcion: <br>{{project.desc}}</p>
+      <p>
+        {{#each project.photos}}
+  <img class="imgDesc" src="{{this}}" alt="fotito">
+  {{/each}}
+  </p>
+  </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!--....................... MODAL ........................... -->
+
+<div class="modal placebid">
+<div class="modal-background"></div>
+<div class="modal-card">
+<header class="modal-card-head">
+<p class="modal-card-title">Ofertar</p>
+<button class="delete delete3" aria-label="close"></button>
+</header>
+<section class="modal-card-body">
+
+<!--....................... Content ........................... -->
+<form class="" action="/offers/new" method="post" >
+  <input type="text" name="projects" value={{project._id}} style="visibility:hidden">
+
+  <!-- PROPUESTA -->
+  <div class="field">
+  <label class="label">Envía una propuesta para este problema :</label>
+    <div class="control">
+      <input class="input" type="text" name="title" placeholder="Propuesta">
+    </div>
+  </div>
+  <!-- PROPUESTA -->
+  <!-- TEXTAREA -->
+  <div class="field">
+    <label class="label">Cómo puedes solucionar este problema?</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="Describe cómo ayudarias al usuario" name="desc" rows="8" cols="80"></textarea>
+    </div>
+  </div>
+  <!-- TEXTAREA -->
+  <!-- COSTO -->
+  <div class="field">
+    <label class="label">Costo</label>
+    <div class="control">
+      <input class="input" type="number" name="price" value="$0.0" placeholder="Precio por el proyecto">
+    </div>
+  </div>
+  <!-- COSTO -->
+  <!-- FECHA -->
+  <div class="field">
+    <label class="label">Fecha de entrega</label>
+    <div class="control">
+      <input class="input" type="date" name="completionDate" placeholder="Fecha de entrega">
+    </div>
+  </div>
+  <!-- FECHA -->
+  <!--....................... Content ........................... -->
+
+  <footer class="modal-card-foot">
+    <button type="submit" class="button is-success">Save changes</button>
+  </footer>
+</form>
+</section>
+</div>
+</div>
+<!--....................... MODAL ........................... -->
+
+
+
+
+
+
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+<script src="../javascripts/script.js"></script>
+
+<style>
+.imgDesc{
+  width:300px;
+  height:300px
+}
+p.detalles{
+  font-size:22px;
+}
+</style>

@@ -1,0 +1,26 @@
+<section class="container">
+
+    <article class="portada" style="background-image:url('{{project.photos.[0]}}')"></article>
+    <h2>{{project.name}} - {{project.user.username}}</h2>
+    <p>
+        {{project.desc}}
+    </p>
+    <h3>$ {{project.price}}.00 MXN</h3>
+
+</section>
+
+<section class="container">
+    <h2>Comentarios:</h2>
+    {{#each project.comments}}
+    <p>{{this.user.username}} - {{this.body}}</p>
+    {{else}}
+    <h3>Aún no hay comentarios</h3>
+    {{/each}}
+    <form action="/pprojects/{{project._id}}" method="post">
+        <input type="text" placeholder="tu nombre" name="name"/>
+        <br>
+        <textarea name="body" id="" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit">
+    </form>
+</section>

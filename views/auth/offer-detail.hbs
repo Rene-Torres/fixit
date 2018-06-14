@@ -1,0 +1,70 @@
+
+<br><br>
+<div class="container">
+    <div class="notification">
+        <a href="/profile" class="button is-link is-outlined">Return</a><br><br>
+        <div class="tile is-ancestor">
+            <div class="tile is-4 is-vertical is-parent">
+                <div class="tile is-child box">
+                    <p class="title">{{project.title}}</p>
+                    <p>
+                                                <a  class="button is-success" href="/sendmail">Contactar worker</a>
+
+                        <br/>
+                        <hr>
+                        <a class="button is-danger">Report this project</a>
+
+
+                    </p>
+
+                </div>
+                <div class="tile is-child box">
+                    <p class="title">Ubicación</p>
+                    <!-- MAP  ////////////////////////-->
+                    <div style="width: 100%"><iframe width="100%" height="372" src="https://maps.google.com/maps?width=100%&height=372&hl=es&q=wework%20insurgentes+(FixIt-Now)&ie=UTF8&t=&z=16&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><br />
+                    <!-- MAP  ////////////////////////-->
+                </div>
+            </div>
+            <div class="container">
+            <div class="tile is-parent">
+                <div class="tile is-child box">
+                          <div class="content">
+
+                    <p class="title">Descripcion de la solicitud</p>
+                    <h1 class="titulos">Propuesta:</h1>
+                    <p class="detalles">
+                    {{offer.title}}
+                    <p>
+                        <h1 class="titulos">Problema:</h1>{{offer.projects.title}}
+
+                    <p>
+                        <br/>
+                        {{#each offer.projects.photos}}
+                            <img class="imgOffer" src="{{this}}" alt="fotito">
+                        {{/each}}
+                    </p>
+                    <p class="detalles">Usuario: {{offer.user.name}}</p>
+                    <p class="detalles"> Descripcion: <br>{{offer.desc}}</p>
+
+                    <p class="detalles"> Costo: <br>{{offer.price}}</p>
+                    <p class="detalles"> Fecha de entrega: <br>{{
+                    moment offer.completionDate "DD-MMMM-YYYY"}}</p>
+</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<style>
+    .imgOffer{
+        height:200px;
+        width:200px;
+
+    }
+    .titulos{
+        font-size: 20px;
+    }
+
+</style>
