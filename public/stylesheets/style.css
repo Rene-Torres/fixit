@@ -1,10 +1,10 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   background: #b3b3b3;
   background-image: url("../images/background image.png"); }
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
 
 .footer {
   background-color: black;
@@ -105,5 +105,8 @@ body {
 
 .field {
   text-align: center; }
+
+.modal__signup .modal-card-body {
+  height: 500px !important; }
 
 /*# sourceMappingURL=style.css.map */

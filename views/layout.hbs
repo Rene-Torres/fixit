@@ -1,274 +1,278 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-     <link rel='stylesheet' href='stylesheets/style.css' />
-     <link rel='stylesheet' href='../stylesheets/style.css' />
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-<body>
-<section class="hero is-dark is-medium">
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="../images/fixit logo.png" alt="Logo">
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item cap">
 
-              {{#if user.name}}
-            <span> Welcome, {{user.name}} {{user.lastname}}</span>
-            </div>
-            <a class="navbar-item" id="profile" href="/profile">
-              Profile
+<head>
+  <title>{{title}}</title>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel='stylesheet' href='stylesheets/style.css' />
+  <link rel='stylesheet' href='../stylesheets/style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <section class="hero is-dark is-medium">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <img src="../images/fixit logo.png" alt="Logo">
             </a>
-            <a class="navbar-item" id="logout" href="/logout">
-              Log out
-            </a>
-            {{else}}
-            <a class="navbar-item is-active"  id="modal-login">
-              login
-            </a>
-             <a class="navbar-item" id="modal-signup">
-              Sign Up
-            </a>
-            {{/if}}
+            <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
           </div>
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item cap">
+
+                {{#if user.name}}
+                <span> Welcome, {{user.name}} {{user.lastname}}</span>
+              </div>
+              <a class="navbar-item" id="profile" href="/profile">
+                Profile
+              </a>
+              <a class="navbar-item" id="logout" href="/logout">
+                Log out
+              </a>
+              {{else}}
+              <a class="navbar-item is-active" id="modal-login">
+                login
+              </a>
+              <a class="navbar-item" id="modal-signup">
+                Sign Up
+              </a>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  {{{body}}}
+
+  <section class="test">
+    <footer class="footer fix-footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            FIXIT-NOW by <a href="https://jgthms.com">Rene & Alex</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Done in Ironhack.
+          </p>
         </div>
       </div>
-    </nav>
-  </div>
-</section>
+    </footer>
+  </section>
 
-    {{{body}}}
 
-<section class="test">
-<footer class="footer fix-footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        FIXIT-NOW by <a href="https://jgthms.com">Rene & Alex</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. Done in Ironhack.
-      </p>
+  {{!--
+  /////////////////////////////////////////
+  ////////// MODAL PARA SIGNUP //////////
+  /////////////////////////////////////////
+  --}}
+
+
+  <div class="modal modal__signup" id="signup">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Register</p>
+        <button class="delete delete2" aria-label="close"></button>
+      </header>
+      <form action="/signup" method="post">
+        <section class="modal-card-body">
+          <a class="googlelogin" href="/google-login"><img src="images/google-sign-in.png" alt="Google_login"
+              width="230"></a>
+          <hr>
+          <section class="formulario">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Name</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="Name" name="name">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="Last Name" name="lastname">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Email" name="username">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <br><br>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Password</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <p class="control has-icons-left">
+                      <input class="input" type="password" name="password" placeholder="Type your password">
+                      <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Repeat password</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <p class="control has-icons-left">
+                      <input class="input" type="password" name="password2" placeholder="Type again your password">
+                      <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">City</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <p class="control has-icons-left">
+                      <input class="input" type="text" name="city" placeholder="Name of your city">
+                      <span class="icon is-small is-left"><i class="fas fa-globe"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Street</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <p class="control has-icons-left">
+                      <input class="input" type="text" name="street" placeholder="Street Name & Number">
+                      <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Postal Code</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <p class="control has-icons-left">
+                      <input class="input" type="text" name="postalcode" placeholder="Local Postal Code">
+                      <span class="icon is-small is-left"><i class="fas fa-location-arrow"></i></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br><br>
+          </section>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success delete2" type="submit">Save changes</button>
+        </footer>
+      </form>
     </div>
   </div>
-</footer>
-</section>
+
+  {{!--
+  /////////////////////////////////////////
+  ////////// MODAL PARA LOGIN //////////
+  /////////////////////////////////////////
+  --}}
 
 
-{{!--
-/////////////////////////////////////////
-//////////  MODAL PARA SIGNUP  //////////
-/////////////////////////////////////////
---}}
-
-
-<div class="modal" id="signup">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Register</p>
-      <button class="delete delete2" aria-label="close"></button>
-    </header>
-    <form action="/signup" method="post">
-    <section class="modal-card-body">
-      <a class="googlelogin" href="/google-login"><img src="images/google-sign-in.png" alt="Google_login" width="230" ></a>
-      <hr>
-      <section class="formulario">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Name</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="Name"  name="name">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
-                </p>
+  <div class="modal" id="login">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Log In</p>
+        <button class="delete delete2" aria-label="close"></button>
+      </header>
+      <form action="/login" method="post">
+        <section class="modal-card-body">
+          <a href="/google-login">login con google</a>
+          <hr>
+          <section class="formulario">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">Account</label>
               </div>
-              <div class="field">
-                <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="Last Name" name="lastname">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
-                </p>
-              </div>
-              <div class="field">
-                <p class="control is-expanded has-icons-left has-icons-right">
-                  <input class="input" type="email" placeholder="Email" name="username">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <br><br>
-
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Password</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <p class="control has-icons-left">
-                    <input class="input" type="password" name="password" placeholder="Type your password">
-                    <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br><br>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-                <label class="label">Repeat password</label>
-            </div>
-            <div class="field-body">
+              <div class="field-body">
                 <div class="field">
-                    <div class="control">
-                        <p class="control has-icons-left">
-                            <input class="input" type="password" name="password2" placeholder="Type again your password">
-                            <span class="icon is-small is-left"><i class="fas fa-lock"></i></span>
-                        </p>
-                    </div>
+                  <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Type your Email" name="username">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                  </p>
                 </div>
-            </div>
-          </div>
-          <br><br>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">City</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <p class="control has-icons-left">
-                    <input class="input" type="text" name="city" placeholder="Name of your city">
-                    <span class="icon is-small is-left"><i class="fas fa-globe"></i></span>
+                <div class="field">
+                  <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="password" placeholder="Password" name="password">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
                   </p>
                 </div>
               </div>
             </div>
-          </div>
-          <br><br>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Street</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <p class="control has-icons-left">
-                    <input class="input" type="text" name="street" placeholder="Street Name & Number">
-                    <span class="icon is-small is-left"><i class="far fa-address-card"></i></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br><br>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Postal Code</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <p class="control has-icons-left">
-                    <input class="input" type="text" name="postalcode" placeholder="Local Postal Code">
-                    <span class="icon is-small is-left"><i class="fas fa-location-arrow"></i></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br><br>
-      </section>
-    </section>
-      <footer class="modal-card-foot">
-        <button class="button is-success delete2" type="submit">Save changes</button>
-      </footer>
-    </form>
+          </section>
+        </section>
+        <footer class="modal-card-foot pie">
+          <button class="button is-success delete2" type="submit">Log In</button>
+        </footer>
+      </form>
+    </div>
   </div>
-</div>
-
-{{!--
-/////////////////////////////////////////
-//////////  MODAL PARA  LOGIN  //////////
-/////////////////////////////////////////
---}}
-
-
-<div class="modal" id="login">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Log In</p>
-      <button class="delete delete2" aria-label="close"></button>
-    </header>
-    <form action="/login" method="post">
-    <section class="modal-card-body">
-    <a href="/google-login">login con google</a>
-      <hr>
-      <section class="formulario">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Account</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <p class="control is-expanded has-icons-left has-icons-right">
-                  <input class="input" type="email" placeholder="Type your Email" name="username">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                  </span>
-                </p>
-              </div>
-              <div class="field">
-                <p class="control is-expanded has-icons-left has-icons-right">
-                  <input class="input" type="password" placeholder="Password" name="password">
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-      </section>
-    </section>
-      <footer class="modal-card-foot pie">
-        <button class="button is-success delete2" type="submit">Log In</button>
-      </footer>
-    </form>
-  </div>
-</div>
 
 
 
-<script src="javascripts/script.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="javascripts/script.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-  </body>
+</body>
+
 </html>
 
 <style>
-  .test{margin-top:200px}
+  .test {
+    margin-top: 200px
+  }
 </style>
-
-
