@@ -1,11 +1,11 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
   background: #b3b3b3;
   background-image: url('../images/background image.png');
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .footer {
@@ -77,55 +77,58 @@ body {
   flex: 1;
 }
 
-.jobstable .table{
-  color:red;
-  width:400px;
+.jobstable .table {
+  color: red;
+  width: 400px;
 }
 
 .googlelogin {
   align-items: center;
 }
 
-.how{
+.how {
   margin-top: 20px;
   background: #d9d9d9;
   height: 400px;
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.projects{
+.projects {
   margin-top: 20px;
   background: #d9d9d9;
   height: 400px;
   display: flex;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
-
 
 .footer {
-  position:fixed;
-  left:0px;
-  bottom:-50px;
-  height:20px;
-  width:100%;
+  position: fixed;
+  left: 0px;
+  bottom: -50px;
+  height: 20px;
+  width: 100%;
 }
 
-.formato{
-  width:500px;
-  display:flex;
+.formato {
+  width: 500px;
+  display: flex;
   justify-content: center;
-  border:2px;
+  border: 2px;
 }
 
-
-.hired{
+.hired {
   text-align: center;
 }
 
-.field{
-text-align: center;}
+.field {
+  text-align: center;
+}
+
+.modal__signup .modal-card-body {
+  height: 500px !important;
+}

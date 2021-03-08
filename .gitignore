@@ -1,4 +1,5 @@
-
+launch.json
+#VS code
 node_modules
 # Dependency directory
 npm-debug.log
@@ -6,4 +7,6 @@ npm-debug.log
 .env  
 # Environment Variables should NEVER be published
 
+
+public/uploads
 
