@@ -10,7 +10,6 @@ const Offer = require('../models/Offer');
 
 router.get('/:id', (req, res) => {
   const projects = Project.find();
-  //console.log(projects)
   let _id = req.params.id;
   Project.findById({ _id })
     .populate('user')
@@ -23,19 +22,20 @@ router.get('/', (req, res, next) => {
   const projects = Project.find()
     .populate('user', 'name')
     .then((projects) => {
-      //console.log(projects)
       res.render('auth/jobs', { projects, user: req.user });
     });
 });
 
+
 router.post('/new', uploads.array('photos', 5), (req, res, next) => {
-  req.body.photos = [];
-  for (let pic of req.files) {
-    req.body.photos.push(pic.url);
-  }
+
+  req.body.photos = req.files.map((file) => file.path)
+
   req.body.user = req.user._id;
+
   Project.create(req.body)
     .then((project) => {
+
       req.user.projects.push(project._id);
       return User.findByIdAndUpdate(req.user._id, req.user);
     })
