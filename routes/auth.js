@@ -19,17 +19,17 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'alejandrosg11@gmail.com',
-    pass: 'Al##11081989',
+    user: 'fixitnow-admin@proton.me',
+    pass: 'fixitnow-admin@proton.me',
   },
 });
 
 var mailOptions = {
-  from: 'fixitnow@gmail.com',
-  to: 'alejandrosg11@gmail.com',
+  from: 'fixitnow-admin@proton.me',
+  to: 'fixitnow-admin@proton.me',
   subject: 'FIXIT-NOW Worker Hired',
   text:
-    'Worker hired in our platform FIXIT-NOW for your project number #02394, Worker: Rene Torres, Contact number :2226620768, email: rene@mail.com',
+    'Worker hired in our platform FIXIT-NOW for your project number #02394, Worker: Manu Manito, Contact number :5512124232, email: fixitnow-admin@proton.me',
 };
 
 router.get('/sendmail', (req, res) => {
@@ -48,7 +48,6 @@ router.get('/users', (req, res, next) => {
     .populate('projects')
     .populate('offers')
     .then((users) => {
-      console.log(users);
       res.render('auth/users', { users: users, projects: req.projects });
     });
 });
@@ -128,7 +127,6 @@ router.get('/signup', (req, res) => {
 });
 
 router.post('/signup', (req, res) => {
-  debugger;
   req.body._id = new mongoose.Types.ObjectId();
   User.register(req.body, req.body.password, function (err, user) {
     if (err) return res.send(err);
@@ -147,8 +145,8 @@ passport.use(
   new GoogleStrategy(
     {
       clientID:
-        '796743130836-dd1ro4b9d0i1qje3rns5md8kmo84q3a5.apps.googleusercontent.com',
-      clientSecret: 'aoraPuQr9mgMnXCv4YMAqrLG',
+        process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
@@ -159,7 +157,6 @@ passport.use(
         if (user) {
           return done(null, user);
         }
-
         const newUser = new User({
           googleID: profile.id,
           username: profile.emails[0].value,

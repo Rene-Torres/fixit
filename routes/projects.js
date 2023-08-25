@@ -28,14 +28,16 @@ router.get('/', (req, res, next) => {
     });
 });
 
+
 router.post('/new', uploads.array('photos', 5), (req, res, next) => {
-  req.body.photos = [];
-  for (let pic of req.files) {
-    req.body.photos.push(pic.url);
-  }
+
+  req.body.photos = req.files.map((file) => file.path)
+
   req.body.user = req.user._id;
+
   Project.create(req.body)
     .then((project) => {
+
       req.user.projects.push(project._id);
       return User.findByIdAndUpdate(req.user._id, req.user);
     })
