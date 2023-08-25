@@ -10,7 +10,6 @@ const Offer = require('../models/Offer');
 
 router.get('/:id', (req, res) => {
   const projects = Project.find();
-  //console.log(projects)
   let _id = req.params.id;
   Project.findById({ _id })
     .populate('user')
@@ -23,7 +22,6 @@ router.get('/', (req, res, next) => {
   const projects = Project.find()
     .populate('user', 'name')
     .then((projects) => {
-      //console.log(projects)
       res.render('auth/jobs', { projects, user: req.user });
     });
 });

@@ -70,7 +70,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/new', (req, res, next) => {
 
-  console.log('aquioferta')
   req.body.offers = [];
   req.body.user = req.user._id;
   Offer.create(req.body)
